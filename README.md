@@ -50,3 +50,36 @@ F --> G[Implement Internal Class Logic]
 end
 E:::decisionStyle
 classDef decisionStyle fill:#f9f,stroke:#333,stroke-width:2px;
+```
+
+## C4 Model: System Context
+
+This diagram illustrates the Listings Service architecture, its primary user, and its supporting external systems.
+
+```mermaid
+---
+title: "Listing Service C4 Model: System Context"
+---
+flowchart TD
+    User["Premium Member<br/>[Person]<br/><br/>A user of the website who has<br/>purchased a subscription"]
+
+    LS["Listings Service<br/>[Software System]<br/><br/>Serves web pages displaying title<br/>listings to the end user"]
+
+    TS["Title Service<br/>[Software System]<br/><br/>Provides an API to retrieve<br/>title information"]
+
+    RS["Review Service<br/>[Software System]<br/><br/>Provides an API to retrieve<br/>and submit reviews"]
+
+    SS["Search Service<br/>[Software System]<br/><br/>Provides an API to search<br/>for titles"]
+
+    User -- "Views titles, searches titles<br/>and reviews titles using" --> LS
+    LS -- "Retrieves title information from" --> TS
+    LS -- "Retrieves from and submits reviews to" --> RS
+    LS -- "Searches for titles using" --> SS
+
+    classDef person fill:#08427b,stroke:#052e56,color:#ffffff
+    classDef focusSystem fill:#1168bd,stroke:#0b4884,color:#ffffff
+    classDef supportingSystem fill:#666666,stroke:#0b4884,color:#ffffff
+
+    class User person
+    class LS focusSystem
+    class TS,RS,SS supportingSystem```

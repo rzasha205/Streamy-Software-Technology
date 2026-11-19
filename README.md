@@ -51,3 +51,22 @@ end
 E:::decisionStyle
 classDef decisionStyle fill:#f9f,stroke:#333,stroke-width:2px;
 ```
+# Streamy Video Streaming Backend Platform
+
+This repository uses native Mermaid support in Markdown for architecture and domain documentation.
+
+## System Context Diagram (C4 Model)
+
+```mermaid
+C4Context
+    title System Context Diagram for Streamy Platform
+    Person(viewer, "Viewer", "Watches films and TV shows, leaves reviews")
+    Person(admin, "Content Admin", "Manages media catalog, genres, and metadata")
+    System(streamy, "Streamy Platform", "Handles authentication, catalog browsing, and HLS video streaming")
+    System_Ext(cdn, "CDN / Media Storage", "Delivers encrypted HLS video chunks")
+    System_Ext(auth, "Identity Provider", "Issues and validates user access tokens")
+
+    Rel(viewer, streamy, "Browses catalog & streams video", "HTTPS / HLS")
+    Rel(admin, streamy, "Uploads & organizes titles", "HTTPS")
+    Rel(streamy, cdn, "Fetches stream manifests", "HTTPS")
+    Rel(streamy, auth, "Verifies session tokens", "JWT / OAuth2")

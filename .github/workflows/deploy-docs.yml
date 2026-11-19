@@ -18,10 +18,11 @@ jobs:
 
       - name: Generate Diagrams In Markdown Files
         run: |
+          printf '{"args":["--no-sandbox","--disable-setuid-sandbox"]}\n' > /tmp/puppeteer-config.json
           cd docs
           for file in $(find . -name '*.md'); do
             [ -f "$file" ] || continue
-            npx -p @mermaid-js/mermaid-cli mmdc --input "$file" --output "$file"
+            npx -p @mermaid-js/mermaid-cli mmdc -p /tmp/puppeteer-config.json --input "$file" --output "$file"
           done
 
       - name: Setup Pages

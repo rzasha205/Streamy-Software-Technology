@@ -12,3 +12,6 @@ sequenceDiagram
     Service-->>-API Gateway: Return Payload
     API Gateway-->>-Client: 200 OK
 ```
+
+---
+[Streamy C4 Container Architecture](./architecture.html)
